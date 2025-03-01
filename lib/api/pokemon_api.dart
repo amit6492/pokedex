@@ -7,10 +7,10 @@ class PokemonApi {
   final String baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 
   Future<Pokemon?> fetchPokemon(String name) async {
-    // ✅ **Check Local Database First**
+    // Check Local Database First
     Pokemon? cachedPokemon = await DatabaseHelper.instance.getPokemon(name);
     if (cachedPokemon != null) {
-      print("✅ Loaded from Database");
+      print("Loaded from Database");
       return cachedPokemon;
     }
 
@@ -21,7 +21,7 @@ class PokemonApi {
         final jsonData = json.decode(response.body);
         Pokemon pokemon = Pokemon.fromJson(jsonData);
 
-        // **Save Pokémon to Local Database**
+        // Save Pokémon to Local Database
         await DatabaseHelper.instance.savePokemon(pokemon);
         return pokemon;
       } else {

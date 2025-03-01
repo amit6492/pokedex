@@ -6,13 +6,15 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, // ✅ Hide Debug Banner
+      debugShowCheckedModeBanner: false,
       title: 'Pokédex',
       theme: ThemeData(primarySwatch: Colors.red),
-      home: SplashScreen(), // ✅ Start with Splash Screen
+      home: SplashScreen(),
     );
   }
 }

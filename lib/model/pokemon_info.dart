@@ -21,14 +21,15 @@ class Pokemon {
       name: json['name'],
       height: json['height'],
       weight: json['weight'],
-      types: (json['types'] as List)
-          .map((type) => type['type']['name'].toString())
-          .toList(),
+      types:
+          (json['types'] as List)
+              .map((type) => type['type']['name'].toString())
+              .toList(),
       imageUrl: json['sprites']['other']['official-artwork']['front_default'],
     );
   }
 
-  // ✅ Convert to Map for SQLite
+  // Convert to Map for SQLite
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -40,7 +41,7 @@ class Pokemon {
     };
   }
 
-  // ✅ Convert from Map (SQLite to Object)
+  // Convert from Map (SQLite to Object)
   factory Pokemon.fromMap(Map<String, dynamic> map) {
     return Pokemon(
       id: map['id'],

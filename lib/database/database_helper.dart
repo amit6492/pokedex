@@ -36,7 +36,7 @@ class DatabaseHelper {
     );
   }
 
-  // ✅ **Save Pokémon to Local Database**
+  // Save Pokemon to Local Database
   Future<void> savePokemon(Pokemon pokemon) async {
     final db = await instance.database;
     await db.insert(
@@ -46,7 +46,7 @@ class DatabaseHelper {
     );
   }
 
-  // ✅ **Retrieve Pokémon from Local Database**
+  // Retrieve Pokémon from Local Database
   Future<Pokemon?> getPokemon(String name) async {
     final db = await instance.database;
     final maps = await db.query(
@@ -61,7 +61,7 @@ class DatabaseHelper {
     return null;
   }
 
-  // ✅ **Clear Old Pokémon Data (Optional)**
+  // Clear Old Pokémon Data (Optional)
   Future<void> clearDatabase() async {
     final db = await instance.database;
     await db.delete('pokemon');

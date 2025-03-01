@@ -44,7 +44,7 @@ class PokedexScreenState extends State<Pokedex> {
         if (fetchedPokemon != null) {
           pokemon = fetchedPokemon;
         } else {
-          errorMessage = "Pokémon not found! 😢";
+          errorMessage = "Pokémon not found! 😒";
         }
         isLoading = false;
       });
@@ -117,9 +117,12 @@ class PokedexScreenState extends State<Pokedex> {
             padding: EdgeInsets.all(10), // ✅ Creates the red border effect
             child: Column(
               children: [
-                // 🔍 SEARCH BAR
+                // SEARCH BAR
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 10,
+                  ),
                   child: Row(
                     children: [
                       Expanded(
@@ -130,12 +133,13 @@ class PokedexScreenState extends State<Pokedex> {
                             filled: true,
                             fillColor: Colors.white,
                             prefixIcon: Icon(Icons.search),
-                            suffixIcon: searchController.text.isNotEmpty
-                                ? IconButton(
-                                    icon: Icon(Icons.clear),
-                                    onPressed: clearSearch,
-                                  )
-                                : null,
+                            suffixIcon:
+                                searchController.text.isNotEmpty
+                                    ? IconButton(
+                                      icon: Icon(Icons.clear),
+                                      onPressed: clearSearch,
+                                    )
+                                    : null,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide.none,
@@ -147,30 +151,31 @@ class PokedexScreenState extends State<Pokedex> {
                       IconButton(
                         onPressed: fetchPokemon,
                         icon: Image.asset(
-                          'assets/pokeball.png',  // 🎾 Poké Ball icon
+                          'assets/pokeball.png', // 🎾 Poké Ball icon
                           width: 50,
                           height: 50,
-                          ),
+                        ),
                       ),
                     ],
                   ),
                 ),
 
-                // ✅ Main Content (Pokédex UI)
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200], // ✅ Light background
+                      color: Colors.grey[200],
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.black, width: 3), // ✅ Black outer border
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 3,
+                      ), // ✅ Black outer border
                     ),
                     child: Column(
                       children: [
-                        // 🔹 HEADER (Pokédex Title)
                         Container(
                           width: double.infinity,
                           padding: EdgeInsets.all(10),
-                          color: Colors.red[900], // ✅ Dark red header
+                          color: Colors.red[900],
                           child: Center(
                             child: Text(
                               "Gotta Catche'em all!",
@@ -184,82 +189,96 @@ class PokedexScreenState extends State<Pokedex> {
                           ),
                         ),
 
-                        // 🔹 DIVIDER LINE (Black Line in Center)
-                        Container(
-                          height: 4,
-                          color: Colors.black,
-                        ),
+                        Container(height: 4, color: Colors.black),
 
-                        // ✅ Pokémon Image or Content
                         Expanded(
                           child: Center(
-                            child: isLoading
-                                ? Lottie.asset(
-                                    'assets/poke_loader_2.json',
-                                    width: 150,
-                                    height: 150,
-                                    fit: BoxFit.cover,
-                                  )
-                                : errorMessage.isNotEmpty
+                            child:
+                                isLoading
+                                    ? Lottie.asset(
+                                      'assets/poke_loader_2.json',
+                                      width: 150,
+                                      height: 150,
+                                      fit: BoxFit.cover,
+                                    )
+                                    : errorMessage.isNotEmpty
                                     ? Text(
-                                        errorMessage,
-                                        style: TextStyle(
-                                            fontFamily: "PixelFont",
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black),
-                                        textAlign: TextAlign.center,
-                                      )
+                                      errorMessage,
+                                      style: TextStyle(
+                                        fontFamily: "PixelFont",
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    )
                                     : pokemon == null
-                                        ? Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [Lottie.asset(
-                                            'assets/balbasur_lottie.json',
-                                            fit: BoxFit.cover,
-                                            width:120,
-                                            height: 120
+                                    ? Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Lottie.asset(
+                                          'assets/balbasur_lottie.json',
+                                          fit: BoxFit.cover,
+                                          width: 120,
+                                          height: 120,
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ), // 🛑 Space between image and text
+                                        Text(
+                                          "Welocme to your pokedex! Search for your pokemon or if you want to be surprised type a no. b/w 1 to 1025.",
+                                          style: TextStyle(
+                                            fontFamily: "PixelFont",
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black54,
                                           ),
-                                          SizedBox(height: 10), // 🛑 Space between image and text
-                                            Text(
-                                              "Welocme to your pokedex! Search for your pokemon or if you want to be surprised type a no. b/w 1 to 1025.",
-                                              style: TextStyle(
-                                                fontFamily: "PixelFont", // 🎮 Retro Font
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black54,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                        ]
-                                        )
-                                        : Column(
-                                            children: [
-                                              Image.network(
-                                                pokemon!.imageUrl,
-                                                width: 200,
-                                                height: 200,
-                                                fit: BoxFit.contain,
-                                              ),
-                                              SizedBox(height: 10),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
+                                    )
+                                    : Column(
+                                      children: [
+                                        Image.network(
+                                          pokemon!.imageUrl,
+                                          width: 200,
+                                          height: 200,
+                                          fit: BoxFit.contain,
+                                        ),
+                                        SizedBox(height: 10),
 
-                                              // 🔹 MODERNIZED DETAILS PANEL
-                                              Container(
-                                                width: double.infinity,
-                                                padding: EdgeInsets.symmetric(vertical: 30),
-                                                color: Colors.blueGrey[900], // ✅ New dark theme
-                                                child: Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    _infoRow("ID", "#${pokemon!.id}"),
-                                                    _infoRow("Name", pokemon!.name),
-                                                    _infoRow("Type", pokemon!.types.join(', '), isHighlighted: true),
-                                                    _infoRow("Height", "${pokemon!.height} ft"),
-                                                    _infoRow("Weight", "${pokemon!.weight} kg"),
-                                                  ],
-                                                ),
+                                        // 🔹 MODERNIZED DETAILS PANEL
+                                        Container(
+                                          width: double.infinity,
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 30,
+                                          ),
+                                          color: Colors.blueGrey[900],
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              _infoRow("ID", "#${pokemon!.id}"),
+                                              _infoRow("Name", pokemon!.name),
+                                              _infoRow(
+                                                "Type",
+                                                pokemon!.types.join(', '),
+                                                isHighlighted: true,
+                                              ),
+                                              _infoRow(
+                                                "Height",
+                                                "${pokemon!.height} ft",
+                                              ),
+                                              _infoRow(
+                                                "Weight",
+                                                "${pokemon!.weight} kg",
                                               ),
                                             ],
                                           ),
+                                        ),
+                                      ],
+                                    ),
                           ),
                         ),
                       ],

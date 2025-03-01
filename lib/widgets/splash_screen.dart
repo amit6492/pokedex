@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:myapp/widgets/pokedex_screen.dart'; // 
+import 'package:myapp/widgets/pokedex_screen.dart'; //
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -12,7 +14,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // ✅ Navigate to Main Screen after 3 seconds
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.red[300], // Pokédex Theme
       body: Center(
         child: Lottie.asset(
-          'assets/poke_loader_1.json', // ✅ Replace with your Pokédex animation
+          'assets/poke_loader_1.json',
           width: 250,
           height: 250,
           fit: BoxFit.cover,

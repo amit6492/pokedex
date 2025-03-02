@@ -1,16 +1,33 @@
-# myapp
+# 🎮 Pokédex App
 
-A new Flutter project.
+A **Flutter-based Pokédex** app that allows users to **search for Pokémon**, view their **stats, abilities, and images**, and caches data for **offline mode**.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Features
+✅ **Search Pokémon** by name  
+✅ **Displays Pokémon details** (ID, type, weight, height, abilities)  
+✅ **Offline Mode** (Previously searched Pokémon are stored in a database)  
+✅ **Lottie Animations** for loading  
+✅ **Poké Ball-themed Search Button**  
+✅ **Custom Pixel Font for Retro Look**  
+✅ **Smooth UI with Pokédex-style theme**  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tech Stack
+- **Flutter** (Dart)
+- **PokeAPI** (REST API)
+- **SQLite (sqflite)** (Offline storage)
+- **SharedPreferences** (Cache control)
+- **Lottie** (Animations)
+- **Provider** (State management)
+
+---
+
+## 📸 Screenshots
+| (![Screenshot 2025-03-02 143201](https://github.com/user-attachments/assets/9694045f-abea-432e-9bfa-d911e065a94f)
+) | (![Screenshot 2025-03-02 143220](https://github.com/user-attachments/assets/e8cbf249-5d35-4f6d-a0e1-72b9d4098e1b))
+ |
+
